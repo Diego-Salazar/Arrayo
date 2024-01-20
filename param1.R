@@ -3,7 +3,8 @@ library(tidyverse)
 library(readxl)
 library(DescTools)
 
-param1_df <- read_excel("Parameters.xlsx", sheet = "Param1")
+param1_df <- read_excel("Parameters.xlsx", sheet = "Param1") %>%
+
 
 groups <- param1_df %>% pull(Group) %>% unique()
 
@@ -14,7 +15,7 @@ group_by(param1_df, Group) %>%
     count_0h = n(),
     count_12h = n(),
     mean_0h = mean(Parameter1_0h, na.rm = TRUE),
-    mean_12h = sd(Parameter1_0h, na.rm = TRUE),
+    mean_12h = sd(Parameter1_12h, na.rm = TRUE),
     sd_0h = sd(Parameter1_0h),
     sd_12h = sd(Parameter1_12h)
   )
